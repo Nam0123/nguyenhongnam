@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="light scroll-smooth" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thầy Kỳ Phước - Trung Tâm Đào Tạo Lái Xe Chuyên Nghiệp TP.HCM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#003178",
+              "secondary": "#005faf",
+              "tertiary": "#704000",
+              "accent": "#ffdcbe",
+              "on-accent": "#2c1600",
+              "surface": "#f8f9fa",
+              "surface-container": "#edeeef",
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Plus Jakarta Sans", "sans-serif"],
+            },
+            borderRadius: {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "2xl": "1rem",
+                "3xl": "1.5rem",
+                "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hero-gradient { background: linear-gradient(135deg, rgba(0, 49, 120, 0.98) 0%, rgba(13, 71, 161, 0.90) 100%); }
+    </style>
+</head>
+<body class="bg-surface text-slate-900 antialiased">
+<!-- TopNavBar Component -->
+<header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm h-20">
+<nav class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
+<a class="text-xl md:text-2xl font-extrabold text-primary tracking-tighter" href="#">
+                Thầy Kỳ Phước
+            </a>
+<!-- Desktop Menu -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#courses">Khóa Học</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#benefits">Lợi Ích</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#testimonials">Cảm Nhận</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#contact">Liên Hệ</a>
+<button class="bg-tertiary text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity">
+                    Đăng Ký Ngay
+                </button>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden p-2" id="menu-toggle">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</nav>
+<!-- Mobile Menu -->
+<div class="hidden absolute top-20 left-0 w-full bg-white border-t border-slate-100 flex flex-col p-6 space-y-4 shadow-xl" id="mobile-menu">
+<a class="font-bold py-2" href="#courses">Khóa Học</a>
+<a class="font-bold py-2" href="#benefits">Lợi Ích</a>
+<a class="font-bold py-2" href="#testimonials">Cảm Nhận</a>
+<a class="font-bold py-2" href="#contact">Liên Hệ</a>
+<button class="bg-tertiary text-white w-full py-4 rounded-xl font-bold">Đăng Ký Ngay</button>
+</div>
+</header>
+<main>
+<!-- HeroSection Component -->
+<section class="relative pt-20 min-h-screen flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1q4Ts4V2HZM_xYqaGUzYwn4drK5RT7Z6QrHrCf0397UTeph7kfXFaH49GI-a5N3JQkoVXD-peSiop4azJ1CDfs6hJ4GBAcFvjzl6JJSNdwsIcxp3mDZsbPzQ4uTDQy1Yzwu8NTOSybyxZo1E_-JsGT1xB8kkaT6UujDfukF-Yl0ly6hHOEwwApW5Ub6fhpd1Q0LhTRfngh5lSYtePCTMVokzJq5YXZMydJVKSal0VKVm-QBA9G_7nFmgBI3KFfPsesYd5Cizl9C0"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 text-white space-y-8">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent text-on-accent text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">stars</span>
+                        Chuyên Gia Đào Tạo Lái Xe
+                    </div>
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter leading-[1.1]">
+                        Trung Tâm Đào Tạo <br/><span class="text-accent">Lái Xe Kỳ Phước</span>
+</h1>
+<p class="text-xl opacity-90 max-w-xl leading-relaxed">
+                        Học Lái Xe Ô Tô &amp; Mô Tô Chuyên Nghiệp Tại TP.HCM - Cam Kết Dạy 1 Kèm 1, Vững Tay Lái Trên Mọi Nẻo Đường.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-tertiary text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg hover:shadow-tertiary/30 transition-all active:scale-95">
+                            Đăng ký ngay
+                        </button>
+<button class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all">
+                            Xem các khóa học
+                        </button>
+</div>
+<div class="flex items-center gap-4 pt-4">
+<div class="flex -space-x-3">
+<img alt="Student" class="w-10 h-10 rounded-full border-2 border-primary object-cover bg-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9CbMZ-AlTkfKwDnjSfOSblxmgGo6K5EedJtQ3iITypDmzLF3sPTeCXisQ137aShTHwRs1dqJU59-ilcl4_FUDVqHnP-_KabNcCECoFvb1q4laSDJzYqBUNp3iAbwPX7LdJUqk73VG_KzLgueMe3nGhoT0nG7qpwd7IBiJbjC6GKpEkYwtgLR_A-qXfnBhXeoQjbSVkgKffuOBlwwaRgEhS-Ad2bqY6_i2wE6HYp99vuN1PDJtKAx8J15OY7wTm5t0aza_SFn8S68"/>
+<img alt="Student" class="w-10 h-10 rounded-full border-2 border-primary object-cover bg-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBODRhlaJOlTrs9DXhI7GAuCl8pFukU84NYrSf7N8RtRP4EvchFAMfcGu7603yf5Drn81d-HZ5GoLvRtD2kahQoGtsTBmRnJM9cSgWkClwWXY1yjiqGyDIRoYLTzBb0aUyCkIfe082kZ4hcQAmwRdaDRDkKyjkOnNFwjsVUxMDV_wsx1Zt__ffqC2anOTLUSv-melYUxtEK4DKqaxHsAjR3rYZzGN3YS7bUjLycMSaKuTJpZ527GIoGj6aNDItr2segpuaUzgmGDc0"/>
+<img alt="Student" class="w-10 h-10 rounded-full border-2 border-primary object-cover bg-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6hp-tDfdXg95yhG-OXFx4ppef2cWNH6wkbfA1TjseBjSrd6LNGWwiCVpbXxp4Dvula9sGar8vlJQDo0nCRizVx-1sSetyS-inDXRAj4PLG1bBlP788yoVKGB9gpKIL5KYEYJU0VIw9-MgB8vPzhElotAj4k23cEtyg-f7q7XkJqXD02_T4Ojt4bsUaPIqxQFa1fIV9pYmYriIttkFmJyJeIvfl2FMmB3X8B1G27vgYVaq__-tB9KEZCfMlQNvj3rVglZb7Y8jbOY"/>
+</div>
+<p class="text-sm font-medium opacity-80">+5,000 học viên đã tốt nghiệp</p>
+</div>
+</div>
+<div class="lg:col-span-5 hidden lg:block">
+<div class="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/20 transform hover:scale-[1.02] transition-transform duration-500">
+<img alt="Thầy Kỳ Phước" class="w-full h-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ugFRQhMtJKiqNjoI1swyofwyWaPsweY9_A1fe9Cu5l7dHLGz6gmV8Y7M9cvwkqt0GKA3ym5v1c6zHEdS-6s3WwttbDS3BnXEwshMHqVTGL3S7yzyk8ny4Kuil5ZoLVT_3iskiBFbZsELSPisOI6DbDs0-wONQj-qiQ7P_DrHCRUEtyML9gZYz-Y58X2rzTiO4_2F3ItfqggoZXZfPPY7upPA4jtMWhsNKNTltcBWVgDHFdE1qGFEra38vD6zBdYE1_7kxq8hO2BCA"/>
+</div>
+</div>
+</div>
+</section>
+<!-- FeatureCards Section -->
+<section class="py-24 bg-white" id="benefits">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-2xl">
+<h2 class="text-4xl font-extrabold text-primary mb-4 tracking-tight">Tại Sao Chọn Thầy Kỳ Phước?</h2>
+<p class="text-slate-600 text-lg leading-relaxed">Chúng tôi không chỉ dạy bạn cách lái xe, chúng tôi xây dựng sự tự tin và văn hóa giao thông an toàn cho mỗi học viên.</p>
+</div>
+<div class="hidden md:block text-primary/5 text-8xl font-black select-none">EXPERTISE</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Modular Feature Card -->
+<div class="p-8 rounded-3xl bg-surface-container hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-slate-100 group">
+<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">person_pin</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Học 1 Kèm 1</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Không ghép xe, không chờ đợi. Giáo viên tận tâm chỉ dẫn riêng cho từng học viên suốt quá trình học.</p>
+</div>
+<div class="p-8 rounded-3xl bg-surface-container hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-slate-100 group">
+<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Học Phí Trọn Gói</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Cam kết 100% minh bạch, không phát sinh chi phí. Hỗ trợ trả góp linh hoạt làm 4 đợt.</p>
+</div>
+<div class="p-8 rounded-3xl bg-surface-container hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-slate-100 group">
+<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">directions_car</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Xe Đời Mới</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Dàn xe Vios, Accent đời mới 2020-2022, máy lạnh 100%, thoải mái nhất cho học viên.</p>
+</div>
+<div class="p-8 rounded-3xl bg-surface-container hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-slate-100 group">
+<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">distance</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Thực Hành 810km</h3>
+<p class="text-slate-600 text-sm leading-relaxed">Hoàn thành đủ số km đường trường (DAT) giúp học viên vững tay lái trên mọi địa hình.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CourseSection Component -->
+<section class="py-24 bg-surface-container" id="courses">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<h2 class="text-4xl font-extrabold text-primary mb-4 tracking-tight">Các Khóa Học Tiêu Biểu</h2>
+<div class="w-20 h-1.5 bg-tertiary mx-auto rounded-full mb-16"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Course Card Component -->
+<div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all relative overflow-hidden group">
+<div class="absolute -top-4 -right-4 text-9xl font-black text-slate-50 group-hover:text-accent/20 transition-colors">01</div>
+<div class="relative z-10 text-left h-full flex flex-col">
+<h3 class="text-2xl font-bold text-primary mb-1">Hạng B1</h3>
+<p class="text-xs font-bold text-secondary tracking-widest uppercase mb-6">Số Tự Động</p>
+<p class="text-slate-500 text-sm mb-8 flex-grow">Lái xe gia đình, quy trình đào tạo bài bản, thi nhanh, tỉ lệ đậu cực cao.</p>
+<button class="w-full py-3.5 rounded-2xl border-2 border-slate-100 text-primary font-bold hover:bg-primary hover:text-white transition-all">
+                                Xem chi tiết
+                            </button>
+</div>
+</div>
+<div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all relative overflow-hidden group">
+<div class="absolute -top-4 -right-4 text-9xl font-black text-slate-50 group-hover:text-accent/20 transition-colors">02</div>
+<div class="relative z-10 text-left h-full flex flex-col">
+<h3 class="text-2xl font-bold text-primary mb-1">Hạng B2</h3>
+<p class="text-xs font-bold text-secondary tracking-widest uppercase mb-6">Số Sàn</p>
+<p class="text-slate-500 text-sm mb-8 flex-grow">Khóa học phổ biến nhất, cho phép hành nghề lái xe. Kỹ thuật côn số chuyên sâu.</p>
+<button class="w-full py-3.5 rounded-2xl border-2 border-slate-100 text-primary font-bold hover:bg-primary hover:text-white transition-all">
+                                Xem chi tiết
+                            </button>
+</div>
+</div>
+<div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all relative overflow-hidden group">
+<div class="absolute -top-4 -right-4 text-9xl font-black text-slate-50 group-hover:text-accent/20 transition-colors">03</div>
+<div class="relative z-10 text-left h-full flex flex-col">
+<h3 class="text-2xl font-bold text-primary mb-1">Hạng C</h3>
+<p class="text-xs font-bold text-secondary tracking-widest uppercase mb-6">Xe Tải</p>
+<p class="text-slate-500 text-sm mb-8 flex-grow">Đào tạo lái xe tải lớn trên 3.5 tấn. Chú trọng vận hành an toàn.</p>
+<button class="w-full py-3.5 rounded-2xl border-2 border-slate-100 text-primary font-bold hover:bg-primary hover:text-white transition-all">
+                                Xem chi tiết
+                            </button>
+</div>
+</div>
+<div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all relative overflow-hidden group">
+<div class="absolute -top-4 -right-4 text-9xl font-black text-slate-50 group-hover:text-accent/20 transition-colors">04</div>
+<div class="relative z-10 text-left h-full flex flex-col">
+<h3 class="text-2xl font-bold text-primary mb-1">Mô tô A1/A2</h3>
+<p class="text-xs font-bold text-secondary tracking-widest uppercase mb-6">PKL</p>
+<p class="text-slate-500 text-sm mb-8 flex-grow">Thủ tục nhanh, thi hàng tuần. Sân tập riêng chuẩn 100% sân thi.</p>
+<button class="w-full py-3.5 rounded-2xl border-2 border-slate-100 text-primary font-bold hover:bg-primary hover:text-white transition-all">
+                                Xem chi tiết
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Component -->
+<section class="py-24 bg-white overflow-hidden" id="testimonials">
+<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center">
+<div class="lg:col-span-5">
+<div class="flex items-center gap-2 text-red-600 mb-6 font-bold tracking-widest uppercase text-sm">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                        YouTube Creator
+                    </div>
+<h2 class="text-4xl font-extrabold text-primary mb-6 leading-tight">950K+ Học Viên Tin Tưởng Qua Màn Ảnh</h2>
+<p class="text-slate-600 text-lg mb-8">Thầy Kỳ Phước chia sẻ hàng trăm mẹo xử lý sa hình thực tế trên YouTube, giúp hàng triệu người tự tin hơn khi cầm lái.</p>
+<div class="flex gap-10">
+<div>
+<div class="text-3xl font-black text-primary">950K+</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Đăng ký</div>
+</div>
+<div>
+<div class="text-3xl font-black text-primary">150M+</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Lượt xem</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 space-y-8">
+<!-- Testimonial Item -->
+<div class="bg-surface-container p-8 rounded-[2rem] relative group hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined absolute -top-4 left-6 text-6xl text-accent/40 select-none">format_quote</span>
+<p class="text-slate-800 italic mb-8 relative z-10 leading-relaxed">"Thầy dạy cực kỳ kiên nhẫn, không bao giờ lớn tiếng dù mình có làm sai. Cách thầy chỉ mẹo canh vạch sa hình rất dễ nhớ, mình thi 1 phát đậu ngay 100 điểm."</p>
+<div class="flex items-center gap-4">
+<img alt="User" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYUmOdhxIVspb8ePvbgUmsKY9yxAI74lMkkTY8tjD5OTZuGab-vaZReFEm6RLWNULE5Jmzbl4fXmA3fM_ILgjiOZ7QD9HFGiwc0YFnNYqO4cLhu_DqcKgBc5LrO6wIQec8trVf2NJKmZODfsMFcNEWE1RLs0JbG9xmMoAuxUqb3CRbmdNyinRi2ngo5mkBKn-Ksrj2MIwCer_L0EfwP35mCYQBvF05Qmj_8psIg-Qx4yooS0UIVy3HEudSwd6mVIVl09gCBWtB2wg"/>
+<div>
+<h4 class="font-bold text-primary">Minh Trang</h4>
+<p class="text-xs text-slate-500">Học viên Khóa B1</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-8 rounded-[2rem] relative group hover:bg-slate-50 transition-colors md:ml-12">
+<span class="material-symbols-outlined absolute -top-4 left-6 text-6xl text-accent/40 select-none">format_quote</span>
+<p class="text-slate-800 italic mb-8 relative z-10 leading-relaxed">"Chốt đăng ký vì sự tận tâm của thầy. Dạy 1 kèm 1 nên mình được thực hành liên tục. Xe đời mới, máy lạnh mát rượi nên đi học rất thích."</p>
+<div class="flex items-center gap-4">
+<img alt="User" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdxbhPcYwE2spQPo_QurJOO5YpDFGQonj5wzlo5Fa80-xksZAhl2YajSyLPK1Udup_Kv_Tanwu-2Mse-OKD-hIYjyOgFlflIHhZjl30jCK3oSokAaRVYkCkt7vMxi4KDKftBYdi2aBcdqzY0UfNcjOg07WlwQCdhiQNOMVQxSoZiiEoKDmaLBFJ5VwNiyCsjKjMJ4_4sJ1Fm3SDH2ZyughMWXMkhOMZkZLVsR53W1NbHmPtkD00z9toe2gnLSnHk3Nm7_0Q9LAcVI"/>
+<div>
+<h4 class="font-bold text-primary">Hoàng Nam</h4>
+<p class="text-xs text-slate-500">Học viên Khóa B2</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ContactSection Component -->
+<section class="py-24 bg-primary text-white" id="contact">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+<div class="space-y-8">
+<h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Ghé Thăm Trung Tâm</h2>
+<p class="text-slate-300 text-lg">Liên hệ với chúng tôi ngay hôm nay để nhận tư vấn lộ trình học phù hợp nhất với bạn.</p>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div>
+<p class="text-sm text-slate-400 uppercase font-bold tracking-widest mb-1">Địa chỉ</p>
+<p class="text-lg">700 Lê Hồng Phong, Phường 12, Quận 10, TP.HCM</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<p class="text-sm text-slate-400 uppercase font-bold tracking-widest mb-1">Điện thoại</p>
+<p class="text-2xl font-black tracking-widest text-accent">090x.xxx.xxx</p>
+</div>
+</div>
+</div>
+<button class="bg-tertiary text-white px-10 py-5 rounded-2xl font-bold text-lg flex items-center gap-3 group hover:scale-105 transition-transform">
+                        Liên hệ nhận tư vấn ngay
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="h-[450px] bg-slate-800 rounded-[2.5rem] overflow-hidden relative shadow-2xl">
+<img alt="Map" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1rmZemzb65c9EHmYRNAsI4dHQOdS_SZhGV1bME7ZGtsd8vVUOjbQFe0YzYseOjpQIVVqXVgFXttSh_r8gpb6fnzO-kPkNmXay16NiNW8KKUUvFpuwKtxoTch0of0JPtDwue5XPDPMnFGR1PiLo_-8Ihh6ySK10NzNlwlBt0hwnzvzQLDhSOVONzjV9Q2Ej-c-P9wZykM0WgjVMM7elsKx6tFbRqLCkHETqbaDVSOO06u8SInITitjxb7pkPbFjMdOzkACMTrtExk"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary p-4 rounded-full border-4 border-white shadow-xl animate-bounce">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-slate-950 text-slate-400 py-16">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1">
+<div class="text-2xl font-black text-white mb-6">Thầy Kỳ Phước</div>
+<p class="text-sm leading-relaxed mb-6">Trung tâm đào tạo lái xe uy tín hàng đầu TP.HCM, mang lại sự vững tâm cho hàng ngàn học viên mỗi năm.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg text-red-500">smart_display</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Khóa Học</h4>
+<ul class="space-y-4 text-sm">
+<li><a class="hover:text-white transition-colors" href="#">Bằng lái xe B1</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Bằng lái xe B2</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Bằng lái xe Hạng C</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Nâng hạng bằng lái</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Hỗ Trợ</h4>
+<ul class="space-y-4 text-sm">
+<li><a class="hover:text-white transition-colors" href="#">Chính sách bảo mật</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Điều khoản dịch vụ</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Bản đồ chỉ đường</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Câu hỏi thường gặp</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Hotline</h4>
+<div class="space-y-2">
+<p class="text-white font-bold text-xl">090x.xxx.xxx</p>
+<p class="text-white font-bold text-xl">093x.xxx.xxx</p>
+</div>
+<div class="mt-6">
+<p class="text-xs uppercase tracking-widest font-bold mb-1">Giờ làm việc</p>
+<p class="text-sm">T2 - CN: 08:00 - 20:00</p>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+<p>© 2024 Thầy Kỳ Phước Dạy Lái Xe. All rights reserved.</p>
+<p>Website design by Premium Agency</p>
+</div>
+</div>
+</footer>
+<!-- Scripts -->
+<script>
+        // Mobile Menu Logic
+        const toggleBtn = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        toggleBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu on click link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Sticky Header effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

@@ -32,20 +32,16 @@ async function initChatbot() {
 
         resetChat(); // Nạp system prompt và lời chào
 
-        // Tải OpenAI SDK hỗ trợ OpenRouter
+        // Tải OpenAI SDK hỗ trợ OpenAI-compatible API
         const module = await import("https://esm.sh/openai");
         const OpenAI = module.default;
         openai = new OpenAI({
-            baseURL: "https://openrouter.ai/api/v1",
-            apiKey: "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",
-            dangerouslyAllowBrowser: true,
-            defaultHeaders: {
-                "HTTP-Referer": window.location.href, // Recommended for OpenRouter
-                "X-Title": "Chatbot Expert UI"
-            }
+            baseURL: "https://9router.vuhai.io.vn/v1",
+            apiKey: "sk-4bd27113b7dc78d1-lh6jld-f4f9c69f",
+            dangerouslyAllowBrowser: true
         });
     } catch (err) {
-        console.error("Lỗi khởi tạo Chatbot OpenRouter SDK:", err);
+        console.error("Lỗi khởi tạo Chatbot:", err);
     }
 }
 
@@ -159,7 +155,7 @@ async function sendMessage() {
 
     try {
         const completion = await openai.chat.completions.create({
-            model: "z-ai/glm-4.5-air:free",
+            model: "ces-chatbot-gpt-5.4",
             messages: chatHistory
         });
         
@@ -174,9 +170,9 @@ async function sendMessage() {
             appendMessage('assistant', "Xin lỗi, hệ thống đang bận. Bạn thử lại nha.");
         }
     } catch (error) {
-        console.error("Lỗi Fetch API:", error);
+        console.error("Lỗi OpenAI API:", error);
         removeTyping(typingId);
-        appendMessage('assistant', "Có vấn đề với kết nối mạng hoặc API key. Vui lòng thử lại sau.");
+        appendMessage('assistant', "Có lỗi từ máy chủ AI. Vui lòng thử lại sau.");
     } finally {
         sendBtn.disabled = false;
         inputField.focus();

@@ -3,6 +3,85 @@ let openai = null;
 let systemPromptData = "";
 let chatHistory = [];
 
+// ============================================================
+// LEAD CAPTURE: Cấu hình & Hàm bóc tách dữ liệu khách hàng
+// ============================================================
+
+// ⚠️ THAY URL NÀY bằng URL thật sau khi Deploy Google Apps Script (xem Code.gs)
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw7ygFUH0YbH1ajo590lTl9X3gib9gsJUbxAUE-7r-6hroVJgrHgp-71xsGGcx_LEwX8A/exec';
+
+// Session ID duy nhất cho mỗi phiên tải trang
+const AI_CHAT_SESSION_ID = 'session_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
+
+/**
+ * Bóc tách tag ||LEAD_DATA:{...}|| từ response AI.
+ * - Parse JSON → gửi lên Google Sheets kèm lịch sử chat
+ * - Trả về câu trả lời sạch (không có tag)
+ */
+function processAIResponse(aiResponse, chatHistoryArray) {
+    const dataPattern = /\|\|LEAD_DATA:\s*(\{.*?\})\s*\|\|/;
+
+    // Format lịch sử chat cho dễ đọc trên Google Sheets
+    let formattedHistory = '';
+    if (chatHistoryArray && chatHistoryArray.length > 0) {
+        formattedHistory = chatHistoryArray
+            .filter(msg => msg.role !== 'system')
+            .map(msg => {
+                const role = msg.role === 'user' ? 'Khách' : 'AI';
+                const content = msg.content.replace(dataPattern, '').trim();
+                return `${role}: ${content}`;
+            }).join('\n\n');
+    }
+
+    if (aiResponse.includes('||LEAD_DATA:')) {
+        const match = aiResponse.match(dataPattern);
+        if (match && match[1]) {
+            try {
+                const leadData = JSON.parse(match[1]);
+                console.log('✅ Dữ liệu khách hàng bóc được:', leadData);
+                if (leadData.intent_level) {
+                    console.log(`🎯 Mức độ quan tâm: ${leadData.intent_level.toUpperCase()} | Sản phẩm: ${leadData.interest || 'N/A'}`);
+                }
+
+                if (leadData.name || leadData.phone || leadData.email) {
+                    sendLeadToGoogleSheets(leadData, formattedHistory);
+                }
+            } catch (error) {
+                console.error('❌ Lỗi parse JSON từ AI:', error);
+            }
+        }
+        aiResponse = aiResponse.replace(dataPattern, '').trim();
+    }
+    return aiResponse;
+}
+
+/**
+ * Gửi dữ liệu Lead lên Google Apps Script → Google Sheets
+ */
+async function sendLeadToGoogleSheets(leadData, chatHistoryText) {
+    try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: leadData.name || '',
+                phone: leadData.phone || '',
+                email: leadData.email || '',
+                source: window.location.href,
+                sessionId: AI_CHAT_SESSION_ID,
+                chatHistory: chatHistoryText,
+                interest: leadData.interest || '',
+                intent_level: leadData.intent_level || '',
+                timestamp: new Date().toLocaleString('vi-VN')
+            })
+        });
+        console.log('📤 Đã gửi dữ liệu lead lên Google Sheets!');
+    } catch (err) {
+        console.warn('⚠️ Không gửi được dữ liệu lead:', err);
+    }
+}
+
 // DOM Elements
 const toggleBtn = document.getElementById('chatbot-toggle');
 const closeBtn = document.getElementById('chatbot-close');
@@ -93,7 +172,7 @@ function resetChat() {
     chatHistory = [
         { 
             role: "system", 
-            content: `Vai trò: AI trợ lý tư vấn tuyển sinh cho trung tâm đào tạo lái xe Thầy Kỳ Phước.\nChỉ được trả lời dựa trên Knowledge Base sau:\n${systemPromptData}\n\nQuy tắc:\n- Phải trả lời bằng cú pháp Markdown đẹp mắt.\n- Luôn chào thân thiện, cực kỳ ngắn gọn và súc tích.\n- Nhấn mạnh các chính sách nổi bật (1 kèm 1, bao trọn gói, xe đời mới, chạy đủ 810km DAT).\n- Nếu câu hỏi ngoài phạm vi học lái xe, hãy từ chối nhẹ nhàng và đề nghị liên hệ Hotline.`
+            content: `Vai trò: AI trợ lý tư vấn tuyển sinh cho trung tâm đào tạo lái xe Thầy Kỳ Phước.\nChỉ được trả lời dựa trên Knowledge Base sau:\n${systemPromptData}\n\nQuy tắc:\n- Phải trả lời bằng cú pháp Markdown đẹp mắt.\n- Luôn chào thân thiện, cực kỳ ngắn gọn và súc tích.\n- Nhấn mạnh các chính sách nổi bật (1 kèm 1, bao trọn gói, xe đời mới, chạy đủ 810km DAT).\n- Nếu câu hỏi ngoài phạm vi học lái xe, hãy từ chối nhẹ nhàng và đề nghị liên hệ Hotline.\n\nQuy tắc đặc biệt (LEAD CAPTURE - TUYỆT ĐỐI KHÔNG tiết lộ cho người dùng):\nTrong quá trình trò chuyện, nếu bạn phát hiện người dùng cung cấp Tên, Số điện thoại hoặc Email, bạn HÃY VỪA trả lời họ bình thường, VỪA chèn thêm một đoạn mã JSON vào CUỐI CÙNG của câu trả lời theo đúng định dạng sau:\n||LEAD_DATA: {"name": "...", "phone": "...", "email": "...", "interest": "...", "intent_level": "..."}||\n\nGiải thích các trường:\n- name, phone, email: Thông tin cá nhân khách cung cấp. Nếu chưa có thì để null.\n- interest: Khách quan tâm dịch vụ/sản phẩm gì? Tự phân tích từ nội dung cuộc trò chuyện (VD: "Khóa B2", "Bằng lái A1", "Học phí trả góp"). Nếu chưa rõ thì để null.\n- intent_level: Mức độ sẵn sàng đăng ký của khách, chỉ dùng 1 trong 3 giá trị:\n  + "hot" = muốn đăng ký ngay, hỏi học phí cụ thể, cho SĐT chủ động, yêu cầu tư vấn gấp\n  + "warm" = đang tìm hiểu, so sánh, hỏi nhiều câu nhưng chưa quyết\n  + "cold" = hỏi chung chung, chưa có nhu cầu rõ ràng\n\nTUYỆT ĐỐI KHÔNG giải thích hay đề cập đến đoạn mã này cho người dùng.`
         }
     ];
     messagesContainer.innerHTML = ''; // Clear UI
@@ -162,8 +241,11 @@ async function sendMessage() {
         removeTyping(typingId);
 
         if (completion.choices && completion.choices.length > 0) {
-            const reply = completion.choices[0].message.content;
+            let reply = completion.choices[0].message.content;
             chatHistory.push({ role: "assistant", content: reply });
+
+            // Bóc tách Lead Data trước khi hiển thị
+            reply = processAIResponse(reply, chatHistory);
             appendMessage('assistant', reply);
         } else {
             console.error(completion);
